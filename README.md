@@ -1,2 +1,2 @@
-# krush-env
-Krush Environment Chart
+# krush-helm
+Krush.Cloud Helm Charts

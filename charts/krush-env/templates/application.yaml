@@ -1,0 +1,30 @@
+
+{{ range $key, $val := .Values.applications }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $val.name | default $key | quote }}
+  namespace: argocd
+  labels:
+    krush.cloud/application: {{ $val.name | default $key | quote }}
+spec:
+  destination:
+{{ if $val.destination -}}
+    {{ toYaml $val.destination | indent 4 }}
+{{- else -}}
+    {{ toYaml $.Values.destination | indent 4 }}
+{{- end }}
+  project: default
+  source:
+    helm:
+      values: |
+{{ toYaml $val.values | indent 8}}
+    path: {{ $val.path }}
+    repoURL: {{ $val.repoURL }}
+    targetRevision: {{ $val.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+
+{{ end }}

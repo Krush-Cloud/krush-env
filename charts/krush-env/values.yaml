@@ -1,0 +1,28 @@
+# Default values for krush-env.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+destination:
+  name: in-cluster
+  namespace: default
+
+applications: {}
+# myapp:
+#   name: app
+#   path: path/to/chart
+#   repoURL: https://github.com/myname/myapp.git
+#   targetRevision: HEAD
+#   values:
+#     heading: "env specific value overrides"
+#     message:
+#       - "Hello"
+#       - "world" 
+# myapp2:
+#   name: app2
+#   path: path/to/chart
+#   repoURL: https://github.com/myname/myapp2.git
+#   targetRevision: HEAD
+#   values:
+#     heading: "env specific value overrides"
+#     message:
+#       - "Hello"
+#       - "world" 
